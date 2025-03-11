@@ -8,6 +8,13 @@ import (
 	"strings"
 )
 
+// GetRandomNum generates a string of random digits of the specified length.
+//
+// Parameters:
+//   - length: The length of the string to be generated.
+//
+// Returns:
+//   - A string of random digits of the specified length.
 func GetRandomNum(length int) string {
 	res := make([]rune, length)
 
@@ -18,6 +25,13 @@ func GetRandomNum(length int) string {
 	return string(res)
 }
 
+// GetSecret generates a string of random characters of the specified length.
+//
+// Parameters:
+//   - length: The length of the string to be generated.
+//
+// Returns:
+//   - A string of random characters of the specified length and an error if one occurred.
 func GetSecret(length int) (string, error) {
 	b := make([]byte, length)
 
