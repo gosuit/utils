@@ -22,35 +22,37 @@ The coder package provides functionality for encryption, decryption, and hashing
 ### Usage
 
 ```golang
+import "github.com/gosuit/utils/coder"
+
 func main() {
-    cfg := Config{
+    cfg := coder.Config{
         Secret:   "your-32-byte-secret-key",
         HashCost: 10,
     }
 
-    coder, err := New(cfg)
+    c, err := coder.New(cfg)
     if err != nil {
         // Handle error
     }
 
-    encrypted, err = coder.Encrypt("your plaintext")
+    encrypted, err = c.Encrypt("your plaintext")
     if err != nil {
         // Handle error
     }
 
-    decrypted, err = coder.Decrypt(encrypted)
+    decrypted, err = c.Decrypt(encrypted)
     if err != nil {
         // Handle error
     }
 
     // decrypted == "your plaintext"
 
-    hash, err = coder.Hash("your plaintext")
+    hash, err = c.Hash("your plaintext")
     if err != nil {
         // Handle error
     }
 
-    err = coder.CompareHash(hash, "your plaintext")
+    err = c.CompareHash(hash, "your plaintext")
     // Check comapre error
 }
 ```
@@ -66,16 +68,15 @@ The generator package provides functions for generating random numbers and secre
 
 ### Usage
 
-1. **Generate Random Numbers**:
-   
-```golang
-   randomNum := generator.GetRandomNum(10)
-```  
 
-2. **Generate Secret Key**:
-   
 ```golang
-   secretKey, err := generator.GetSecret(32)
+import "github.com/gosuit/utils/generator"
+
+func main() {
+    randomNum := generator.GetRandomNum(10)
+
+    secretKey, err := generator.GetSecret(32)
+}
 ```
 
 ## Contributing
