@@ -41,14 +41,21 @@ func TestHash(t *testing.T) {
 	}
 }
 
-func getCoder() *Coder {
+func getCoder() Coder {
 	secret, err := generator.GetSecret(32)
 	if err != nil {
 		panic(err)
 	}
 
-	return &Coder{
-		secret: secret,
-		cost:   10,
+	cfg := &Config{
+		Secret:   secret,
+		HashCost: 10,
 	}
+
+	coder, err := New(cfg)
+	if err != nil {
+		panic(err)
+	}
+
+	return coder
 }
