@@ -54,10 +54,10 @@ type Coder interface {
 // It includes the encryption secret and the cost for hashing.
 type Config struct {
 	// Encryption secret must be 16, 24 or 32 bytes
-	Secret string `env:"CODER_ENCRYPT_SECRET" env-default:""`
+	Secret string `confy:"secret" env:"CODER_ENCRYPT_SECRET" env-default:"" validate:"len=16|len=24|len=32"`
 
 	// HashCost must be in range [4; 31]
-	HashCost int `env:"CODER_HASH_COST" env-default:"10"`
+	HashCost int `confy:"cost" env:"CODER_HASH_COST" env-default:"10" validate:"gte=4,lte=31"`
 }
 
 // New creates a new Coder instance with the provided configuration.
